@@ -1,0 +1,25 @@
+.product {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.status span {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Approved span {
+    background-color: #b9ffc0;
+}
+
+.Pending span {
+    background-color: #fff177;
+}
+
+.Declined span {
+    background-color: #ffb9c0;
+}

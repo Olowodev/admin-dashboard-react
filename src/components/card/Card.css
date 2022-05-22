@@ -1,0 +1,69 @@
+.card {
+    padding: 15px 10px;
+    width: 171px;
+    border: 1px solid #dfe0eb;
+    cursor: pointer;
+}
+
+.card:hover {
+    border: 1px solid #3751FF;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.4px;
+    color: #000;
+}
+
+.percentage {
+    display: flex;
+    align-items: center;
+}
+
+.percentage img {
+    margin-right: 5px;
+    width: 15px;
+    height: 8px;
+}
+
+.percentage p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #00b712;
+}
+
+.cardMiddle {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.cardMiddle p {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #252733;
+}
+
+.cardBottom {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 38px;
+}
+
+.cardBottom div {
+    display: flex;
+    background-color: #ffd1d1;
+    padding: 7px;
+    border-radius: 5px;
+}

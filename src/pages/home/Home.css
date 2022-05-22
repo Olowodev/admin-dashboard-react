@@ -1,0 +1,176 @@
+.homecontainerHeader {
+    display: flex;
+    margin-top: 54px;
+    
+}
+
+.welcomeCard {
+    padding: 30px 30px 0 30px;
+    display: flex;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    border: 1px solid #dfe0eb;
+    margin-right: 25px;
+}
+
+.welcomeCard h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0.4px;
+    color: #3a70e8;
+}
+
+.welcomeCard p {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0.4px;
+    color: #000;
+    margin-right: 50px;
+}
+
+.cards {
+    display: flex;
+    gap: 25px;
+}
+
+.charts {
+    margin-top: 70px;
+    display: flex;
+    gap: 70px;
+}
+
+.piechartCard {
+    height: 546px;
+    width: 450px;
+    padding: 31px 15px;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    overflow-x: hidden;
+    overflow: -moz-scrollbar-none;
+    -ms-overflow-style: none;
+}
+
+.piechartCard::-webkit-scrollbar {
+    display: none;
+}
+
+.piechartHeader {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.4px;
+    color: #000;
+}
+
+.piechartImg {
+    margin-top: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piechartSubhead {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 40;
+    line-height: 23px;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.56);
+}
+
+.total {
+    margin-top: 10px;
+    font-size: 32px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0.4px;
+    color: #000;
+}
+
+.categories {
+    margin-top: 30px;
+}
+
+.category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.categoryLogo {
+    background-color: rgba(105, 108, 255, 0.23);
+    display: flex;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.categoryName:first-child {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.4px;
+    color: #000;
+}
+
+.categoryDesc {
+    margin-top: 3px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.categoryAmount {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.4px;
+}
+
+.chartContainer {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    width: 100%;
+    padding: 30px;
+}
+
+.transContainer {
+    border: 1px solid #DFE0EB;
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 60px;
+}
+
+.transContainer h1 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.4px;
+    color: #000;
+}
+
+.transTable {
+    margin-top: 27px;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    padding-top: 34px;
+}
+
+.transTableTag td {
+    border-top: 2px solid #DFE0EB;
+}
+
+.transTableTag {
+    border-spacing: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.transTableTag th, .transTableTag td {
+    padding: 34px 11px;
+}

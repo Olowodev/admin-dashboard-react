@@ -1,0 +1,9 @@
+.layout {
+    display: flex;
+    margin-top: 30px;
+}
+
+.outlet {
+    flex: 1;
+    margin: 0 30px;
+}

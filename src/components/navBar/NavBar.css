@@ -1,0 +1,55 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbarTitle p {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.3px;
+    color: #252733;
+}
+
+.navbarEnd {
+    display: flex;
+    align-items: center;
+}
+
+.navbarIcons {
+    display: flex;
+    align-items: center;
+}
+
+.navbarIcon {
+    width: 16px;
+    height: 16px;
+    margin-left: 24px;
+    cursor: pointer;
+    color: #c5c7cd;
+}
+
+.navbarIcon:hover {
+    color: #000;
+}
+
+.vline {
+    height: 32px;
+    width: 2px;
+    background-color: #dfe0eb;
+    margin: 0 32px;
+}
+
+.navbarProfile {
+    display: flex;
+    align-items: center;
+}
+
+.navbarProfile p {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #252733;
+    margin-right: 14px;
+}
