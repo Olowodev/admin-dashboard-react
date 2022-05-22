@@ -4,9 +4,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import FormInput from "../../components/formInput/FormInput";
 import { login } from "../../redux/apiCalls";
+import { Navigate } from 'react-router-dom';
 import './Login.css'
+import { useSelector } from 'react-redux';
 
 const Login = () => {
+
+  const admin = useSelector((state) => state.user.currentUser === null ? null : state.user.currentUser.isAdmin);
 
     const [values, setValues] = useState({
         firstname: '',
@@ -81,9 +85,13 @@ const Login = () => {
           required: true,
         },*/
       ];
-    return (
-        <div className='login'>
+      if(admin) {
+        return <Navigate to='/' replace={true} />
+      }
 
+    return (
+
+        <div className='login'>
             <div className='loginCard'>
                 <img src={logo} alt='the decalmasters logo' />
                 <p>Dashboard</p>
