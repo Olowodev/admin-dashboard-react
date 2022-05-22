@@ -1,0 +1,10 @@
+.productContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.cardContainer {
+    display: flex;
+    gap: 30px;
+}

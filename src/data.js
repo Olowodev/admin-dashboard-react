@@ -1,4 +1,4 @@
-import { faChartPie, faUser, faShop, faCreditCard, faTicket, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faChartPie, faUser, faShop, faCreditCard, faTicket, faArrowRightFromBracket, faBoxOpen, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import pp from './images/pp.png'
 import tpp1 from './images/tpp1.png'
 import tpp2 from './images/tpp2.png'
@@ -139,4 +139,19 @@ export const RegisteredUsers = [
         email: 'user@gmail.com',
         date: 'May 6, 2019',
     },
+]
+
+export const productCard = [
+    {
+        title: 'Total Products',
+        value: '5874',
+        icon: faBoxOpen,
+        svgColor: '#3a36db'
+    },
+    {
+        title: 'Total Sales',
+        value: '10045',
+        icon: faCartShopping,
+        svgColor: '#ff69b4'
+    }
 ]

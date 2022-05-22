@@ -11,6 +11,7 @@ import { useSelector } from "react-redux"
 import RequireAuth from './requireAuth';
 import Layout from './components/layout/Layout';
 import Users from './pages/users/Users';
+import Products from './pages/products/Products';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<RequireAuth><Home /></RequireAuth>} />
           <Route path='users' element={<RequireAuth><Users /></RequireAuth>} />
+          <Route path='products' element={<RequireAuth><Products /></RequireAuth>} />
         </Route>
       </Routes>
       </Router>

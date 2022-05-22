@@ -1,0 +1,48 @@
+.productPageCard {
+    padding-top: 20px;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.cardTop {
+    display: flex;
+    margin: 0 10px 0 20px;
+    align-items: center;
+}
+
+.iconContainer {
+    background-color: #3a36db15;
+    border-radius: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.boxIcon {
+    margin: 22px;
+    width: 32px;
+    height: 24px;
+}
+
+.cardTopMiddle {
+    margin-right: 39px;
+}
+.cardTopMiddle p:first-child {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 400;
+}
+
+.cardTopMiddle p:last-child {
+    font-size: 26px;
+    line-height: 33px;
+    font-weight: 700;
+}
+
+.cardTopLast p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #03a89e90;
+}

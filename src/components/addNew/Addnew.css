@@ -1,0 +1,108 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.addnew {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    padding: 40px 30px;
+}
+
+.header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+    color: #06152b;
+}
+
+.imageSelect {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f4fa;
+    padding: 45px;
+    width: 110px;
+    align-self: center;
+    margin-top: 39px;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.formInput4 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.formInputContainer {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.formInput2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.formInput3 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.button {
+    margin-top: 65px;
+    background-color: #3a36db;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addNewButton {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    gap: 10px;
+    color: white;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.formInput input,.formInput2 input {
+    height: 50px;
+    background-color: #f1f4fa;
+    border-radius: 10px;
+    padding: 17px 15px;
+    border: none;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #06152b;
+}
+
+.formInput4 textarea {
+    height: 98px;
+    background-color: #f1f4fa;
+    border-radius: 10px;
+    border: none;
+    padding: 19px 15px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #06152b;
+    resize: none;
+}
+
+.formInput label, .formInput2 label, .formInput4 label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #06152b;
+}
