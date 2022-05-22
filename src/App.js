@@ -10,6 +10,7 @@ import {
 import { useSelector } from "react-redux"
 import RequireAuth from './requireAuth';
 import Layout from './components/layout/Layout';
+import Users from './pages/users/Users';
 
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login' element={<Login />}/>
-        <Route element={<Layout />}>
-          <Route path='/' element={<RequireAuth><Home /></RequireAuth>} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<RequireAuth><Home /></RequireAuth>} />
+          <Route path='users' element={<RequireAuth><Users /></RequireAuth>} />
         </Route>
       </Routes>
       </Router>
