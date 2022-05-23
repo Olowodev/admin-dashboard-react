@@ -12,6 +12,7 @@ import RequireAuth from './requireAuth';
 import Layout from './components/layout/Layout';
 import Users from './pages/users/Users';
 import Products from './pages/products/Products';
+import Orders from './pages/orders/Orders';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route index element={<RequireAuth><Home /></RequireAuth>} />
           <Route path='users' element={<RequireAuth><Users /></RequireAuth>} />
           <Route path='products' element={<RequireAuth><Products /></RequireAuth>} />
+          <Route path='orders' element={<RequireAuth><Orders /></RequireAuth>} />
         </Route>
       </Routes>
       </Router>
