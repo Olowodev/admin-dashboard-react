@@ -6,11 +6,15 @@ import FormInput from "../../components/formInput/FormInput";
 import { login } from "../../redux/apiCalls";
 import { Navigate } from 'react-router-dom';
 import './Login.css'
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const Login = () => {
 
   const admin = useSelector((state) => state.user.currentUser === null ? null : state.user.currentUser.isAdmin);
+  const isLoading = useSelector((state) => state.user.isFetching === null ? null : state.user.isFetching);
+  const errorMessage = useSelector((state) => state.user.error === null ? null : state.user.error);
+
 
     const [values, setValues] = useState({
         firstname: '',
@@ -19,7 +23,20 @@ const Login = () => {
         password: '',
         confirmPassword: '',
     });
+    const [focused, setFocused] = useState(false);
     const dispatch = useDispatch();
+
+    
+
+    useEffect(() => {
+      if (focused === true) {
+        
+      }
+    }, [focused])
+
+    const handleFocus = (e) => {
+      setFocused(true);
+  };
 
     
     const handleSubmit = (e) => {
@@ -104,9 +121,14 @@ const Login = () => {
                             {...input}
                             value={values[input.name]}
                             onChange={onChange}
+                            onFocus={() =>
+                              input.name === "confirmPassword" && setFocused(true)}
+                            focused={focused.toString()}
+                            onBlur={handleFocus}
                         />
                     ))}
-                    <button className='button'>Log In</button>
+                    <button className='button'>{isLoading ? <div className='lddring'><div></div></div> : <span>Log In</span>}</button>
+                    <span className='error1'>{errorMessage}</span>
                 </form>
                 <p className='registerLink'>Don't have an account?<span>Sign Up</span></p>
             </div>

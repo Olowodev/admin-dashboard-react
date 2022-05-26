@@ -1,8 +1,21 @@
-import { faCalendarAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-import './Usertables.css'
+import { faCalendarAlt} from "@fortawesome/free-solid-svg-icons";
+import './InvoiceTable.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faEnvelope, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { FaEllipsisV, FaTrash, FaEdit } from "react-icons/fa";
+import { faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FaStar, FaEllipsisV, FaEdit, FaTrash } from "react-icons/fa";
+import { useState } from "react";
+
+function FaStarComponent() {
+    const [clicked, setClicked] = useState(false);
+
+    return (
+        <FaStar onClick={() => {
+            setClicked(!clicked);
+        }}
+        style={{ color: clicked ? "gold" : "#9fa2b4"}}
+        className="star" />
+    );
+}
 
 function FaEllipsisComponent() {
     
@@ -30,37 +43,17 @@ function FaEllipsisComponent() {
     );
 }
 
-const Usertables = ({userData}) => {
-    
-    const getMonth = (date) => {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const neededDate  = new Date(date);
-
-        const month = months[neededDate.getMonth()]
-
-        return month
-    }
-
-    const getDay = (date) => {
-        const neededDate  = new Date(date);
-
-        const day = neededDate.getDate()
-
-        return day
-    }
-
-    const getYear = (date) => {
-        const neededDate  = new Date(date);
-
-        const year = neededDate.getFullYear()
-
-        return year
-    }
-
+const InvoiceTable = ({InvoiceData}) => {
     return (
         <div>
             <table className='table'>
-                <thead>
+                <thead className="thead">
+                    <th className='th'>
+                        <div>
+                            <p>Invoice Id</p>
+                            <FontAwesomeIcon icon={faCaretDown}/>
+                        </div>
+                    </th>
                     <th className='th'>
                         <div>
                             <p>Name</p>
@@ -70,7 +63,7 @@ const Usertables = ({userData}) => {
                     <th className='th'>
                         <div>
                             <p>Email</p>
-                            <FontAwesomeIcon icon={faCaretDown} />
+                            <FontAwesomeIcon icon={faCaretDown}/>
                         </div>
                     </th>
                     <th className='th'>
@@ -80,37 +73,40 @@ const Usertables = ({userData}) => {
                         </div>
                     </th>
                 </thead>
-                {userData.length > 0 &&
                 <tbody>
-                    {userData.map((user, index)=>(
+                    {InvoiceData.map((invoice, index)=>(
                         <tr key={index} className='tbody'>
                             <td>
+                                <p>{`#${index}`}</p>
+                            </td>
+                            <td>
                                 <div>
-                                    {!user.profileImg ? <FontAwesomeIcon className="userImg" icon={faUserCircle} /> : <img src={user.profileImg} alt='' />}
-                                    <p>{`${user.firstname} ${user.lastname}`}</p>
+                                    <img src={invoice.img} alt='' />
+                                    <p>{`${invoice.firstname} ${invoice.lastname}`}</p>
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     <FontAwesomeIcon icon={faEnvelope} />
-                                    <p>{user.email}</p>
+                                    <p>{invoice.email}</p>
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     <FontAwesomeIcon icon={faCalendarAlt} />
-                                    <p>{`${getMonth(user.createdAt)} ${getDay(user.createdAt)}, ${getYear(user.createdAt)}`}</p>
+                                    <p>{invoice.date}</p>
                                 </div>
+                            </td>
+                            <td>
+                                <FaStarComponent className="star"/>
                             </td>
                             <FaEllipsisComponent />
                         </tr>
                     ))}
                 </tbody>
-                }
             </table>
-            {userData.length === 0 && <p className='no-data'>No data to display.....</p>}
         </div>
     );
 }
 
-export default Usertables;
+export default InvoiceTable;

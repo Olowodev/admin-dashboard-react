@@ -1,4 +1,4 @@
-.users {
+.ticket {
     margin-top: 54px;
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
@@ -18,11 +18,16 @@
     font-weight: 700;
 }
 
+.functions {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
 .function {
     display: flex;
     gap: 8px;
     align-items: center;
-    cursor: pointer;
 }
 
 .function p {
@@ -31,10 +36,6 @@
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.2px;
-}
-
-.function:hover .headerIcon {
-    color: #000;
 }
 
 .headerIcon {

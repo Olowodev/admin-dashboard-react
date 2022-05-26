@@ -1,9 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NavBar.css'
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import profileImg from '../../images/profile.png'
+import { useSelector } from 'react-redux';
 
 const Navbar = ({page}) => {
+
+    const user = useSelector((state) => state.user.currentUser === null ? null : state.user.currentUser);
+    
     return (
         <div className='navbar'>
             <div className='navbarTitle'>
@@ -16,8 +20,9 @@ const Navbar = ({page}) => {
                 </div>
                 <div className='vline'></div>
                 <div className='navbarProfile'>
-                    <p>Stephen Soleye</p>
-                    <img src={profileImg} alt='' />
+                    <p>{`${user.firstname} ${user.lastname}`}</p>
+                    {user.profileImg ? <img src={user.profileImg} alt='' /> :
+                    <FontAwesomeIcon className='userIcon' icon={faUserCircle} />}
                 </div>  
             </div>
         </div>

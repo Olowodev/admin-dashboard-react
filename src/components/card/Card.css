@@ -47,7 +47,7 @@
     justify-content: center;
 }
 
-.cardMiddle p {
+.cardMiddle div {
     font-size: 40px;
     font-weight: 700;
     line-height: 50px;
@@ -61,7 +61,7 @@
     margin-top: 38px;
 }
 
-.cardBottom div {
+.cardBottomDiv {
     display: flex;
     background-color: #ffd1d1;
     padding: 7px;

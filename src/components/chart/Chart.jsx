@@ -8,6 +8,8 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
+import './Chart.css'
+
 
 const data = [
   {
@@ -30,32 +32,35 @@ const data = [
     name: "May",
     total: 2181
   },
+  {
+    name: "May",
+    total: 2181
+  },
+  {
+    name: "May",
+    total: 2181
+  },
 ];
 
 const Chart = () => {
   return (
+    <div className="chart">
     <ResponsiveContainer width={640} height={400}>
         <AreaChart 
             width={640} 
             height={250} 
             data={data}
             margin={{ 
-                top: 30, 
+                top: 0, 
                 right: 0, 
                 left: 0, 
                 bottom: 0 }}>
-            <defs>
-                <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-                </linearGradient>
-            </defs>
             <XAxis dataKey="name" stroke="gray" />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
-            <Area type="monotone" dataKey="total" stroke="#8884d8" fillOpacity={1} fill="url(#total)" />
+            <Tooltip cursor={false} />
+            <Area type="monotone" dataKey="total" stroke="#3a70e8" fill="#fff" strokeWidth={4} />
         </AreaChart>
     </ResponsiveContainer>
+    </div>
   );
 }
 

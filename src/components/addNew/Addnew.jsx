@@ -13,15 +13,15 @@ const Addnew = () => {
                 <div className='imageSelect'>
                     <FontAwesomeIcon icon={faCamera} />
                 </div>
-                <div className='formInput'>
+                <div className='addNewformInput'>
                     <label>Product Name</label>
                     <input />
                 </div>
-                <div className='formInput'>
+                <div className='addNewformInput'>
                     <label>Category</label>
                     <input />
                 </div>
-                <div className='formInput'>
+                <div className='addNewformInput'>
                     <label>Color</label>
                     <input type='color' />
                 </div>
@@ -40,7 +40,7 @@ const Addnew = () => {
                     <label>Descriptions</label>
                     <textarea></textarea>
                 </div>
-                <button className='button'>
+                <button className='button1'>
                     <div className='addNewButton'>
                         <FontAwesomeIcon icon={faSave} />
                         <p>Save Product</p>

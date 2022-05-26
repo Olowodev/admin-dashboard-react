@@ -7,8 +7,8 @@ export const login = async (dispatch,user) => {
         const res = await publicRequest.post('/auth/adminlogin', user)
         dispatch(loginSuccess(res.data))
     }catch(err){
-        dispatch(loginFailure())
-        console.log(err)
+        dispatch(loginFailure(err.response.data))
+        console.log(err.response.data)
     }
 }
 

@@ -33,6 +33,17 @@
     color: #000;
 }
 
+.userIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.navbarProfile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
 .vline {
     height: 32px;
     width: 2px;

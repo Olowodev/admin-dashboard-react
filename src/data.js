@@ -1,4 +1,4 @@
-import { faChartPie, faUser, faShop, faCreditCard, faTicket, faArrowRightFromBracket, faBoxOpen, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faChartPie, faUser, faShop, faCreditCard, faTicket, faArrowRightFromBracket, faBoxOpen, faCartShopping, faFileInvoice } from '@fortawesome/free-solid-svg-icons';
 import pp from './images/pp.png'
 import tpp1 from './images/tpp1.png'
 import tpp2 from './images/tpp2.png'
@@ -45,6 +45,12 @@ export const sidebarTabs = [
     },
     {
         sn: 6,
+        icon: faFileInvoice,
+        text: 'Invoices',
+        link: '/invoices'
+    },
+    {
+        sn: 7,
         icon: faArrowRightFromBracket,
         text: 'Log out',
         link: '/login'
@@ -154,4 +160,79 @@ export const productCard = [
         icon: faCartShopping,
         svgColor: '#ff69b4'
     }
+]
+
+export const Ticket = [
+    {
+        img: '/tpp1.png',
+        title: 'Contact Email not Linked',
+        updateDate: '',
+        name: 'Tom Cruise',
+        date: 'May 26, 2019',
+        time: '6:30pm',
+        priority: 'HIGH'
+    },
+    {
+        img: '/tpp2.png',
+        title: 'Adding Images to Featured Posts',
+        updateDate: '',
+        name: 'Matt Damon',
+        date: 'May 26, 2019',
+        time: '6:30pm',
+        priority: 'LOW'
+    },
+    {
+        img: '/tpp3.png',
+        title: 'When will I be charged this month?',
+        updateDate: '',
+        name: 'Robert Downey',
+        date: 'May 26, 2019',
+        time: '6:30pm',
+        priority: 'HIGH'
+    },
+    {
+        img: '/tpp4.png',
+        title: 'Payment not going through',
+        updateDate: '',
+        name: 'Christian Bale',
+        date: 'May 6, 2019',
+        time: '6:30pm',
+        priority: 'NORMAL'
+    },
+
+    {
+        img: '/tpp5.png',
+        title: 'Unable to add replies',
+        updateDate: '',
+        name: 'Henry Cavil',
+        date: 'May 6, 2019',
+        time: '6:30pm',
+        priority: 'HIGH'
+    },
+    {
+        img: '/tpp6.png',
+        title: 'Downtime since last week',
+        updateDate: '',
+        name: 'Chris Evans',
+        date: 'May 6, 2019',
+        time: '6:30pm',
+        priority: 'NORMAL'
+    },
+    {
+        img: '/tpp7.png',
+        title: 'Referral Bonus',
+        updateDate: '',
+        name: 'Sam Smith',
+        date: 'May 6, 2019',
+        time: '6:30pm',
+        priority: 'LOW'
+    },
+    {
+        img: '/tpp8.png',
+        title: 'How do I change my password?',
+        name: 'Steve Rogers',
+        date: 'May 6, 2019',
+        time: '6:30pm',
+        priority: 'NORMAL'
+    },
 ]

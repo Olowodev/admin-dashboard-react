@@ -9,9 +9,50 @@ import Piechart from '../../components/piechart/Piechart'
 import illus from '../../images/rafiki.png'
 import icon from '../../images/userRed.svg'
 import vector from '../../images/vector.svg'
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { userRequest } from '../../requestMethods';
 
 const Home = () => {
 
+    const transactionsArray = false
+
+  const user = useSelector((state) => state.user.currentUser === null ? null : state.user.currentUser);
+  const [lastWeekUsers, setLastWeekUsers] = useState([])
+  const [newUsers, setNewUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchNewUsers() {
+        setLoading(true);
+        try {
+            const res = await userRequest.get('/user?new=true');
+            const newUsers = res.data;
+            setNewUsers(newUsers)
+            console.log(newUsers)
+            setLoading(false);
+        } catch (err) {
+            console.log(err)
+            setLoading(false);
+        }
+    }
+    async function fetchpreviousWeekUsers() {
+        try {
+            const res = await userRequest.get('/user/?pastweek=true');
+            const previousUsers = res.data;
+            setLastWeekUsers(previousUsers);
+            console.log(previousUsers)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    fetchNewUsers();
+    fetchpreviousWeekUsers();
+  }, [])
+
+  const percentageIncrease = lastWeekUsers.length !== 0 ? ((newUsers.length - lastWeekUsers.length)/lastWeekUsers.length) * 100 : newUsers.length * 100;
 
   return (
       <div className='home'>
@@ -22,15 +63,15 @@ const Home = () => {
                 <div className='homecontainerHeader'>
                     <div className='welcomeCard'>
                         <div>
-                            <h1>WELCOME STEPHEN!</h1>
+                            <h1>{`WELCOME ${user.firstname.toUpperCase()}!`}</h1>
                             <p>You have done 80% more sales than last month</p>
                         </div>
                         <img src={illus} alt="illustration" />
                     </div>
 
                     <div className='cards'>
-                        <Card title='Users' value='60' icon={icon} percentage='+5%' />
-                        <Card title='Users' value='60' icon={icon} percentage='+5%' />
+                        <Card title='Users' loading={loading} value={loading ? <div className='ldsring'><div></div></div> : newUsers.length} icon={icon} percentage={percentageIncrease + '%'} />
+                        <Card title='Orders' loading={loading} value={loading ? <div className='ldsring'><div></div></div> : 60} icon={icon} percentage='+5%' />
                     </div>
                 </div>
 
@@ -83,10 +124,11 @@ const Home = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {transactions.map((trans, index)=>(
+                                { transactions.map((trans, index)=>(
                                     <Table key={index} trackingId={trans.trackingId} pp={trans.pp} product={trans.productname} customer={trans.customer} date={trans.date} amount={trans.amount} paymentMethod={trans.paymentmethod} status={trans.status} />
                                 ))}
                             </tbody>
+                              
                         </table>
                     </div>
                 </div>

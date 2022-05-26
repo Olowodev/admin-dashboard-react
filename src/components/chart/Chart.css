@@ -1,0 +1,9 @@
+.chart {
+    height: 70%;
+    align-self: flex-end;
+}
+
+.recharts-default-tooltip {
+    background-color: black !important; 
+    border-color: black !important;
+}

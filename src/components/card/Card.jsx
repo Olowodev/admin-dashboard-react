@@ -1,7 +1,7 @@
 import './Card.css'
 import img from '../../images/profit.svg'
 
-const Card = ({title, value, icon, percentage}) => {
+const Card = ({title, value, icon, percentage, loading}) => {
     return (
         <div className='card'>
             <div className='cardHeader'>
@@ -15,11 +15,11 @@ const Card = ({title, value, icon, percentage}) => {
             </div>
 
             <div className='cardMiddle'>
-                <p>{value}</p>
+                <div>{value}</div>
             </div>
-
+            
             <div className='cardBottom'>
-                <div>
+                <div className={loading ? '' : 'cardBottomDiv'}>
                     <img src={icon} alt='' />
                 </div>
             </div>

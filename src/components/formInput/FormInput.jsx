@@ -2,12 +2,10 @@ import { useState } from 'react';
 import './FormInput.css'
 
 const FormInput = (props) => {
-    const [focused, setFocused] = useState(false);
-    const { label, errorMessage, onChange, id, ...inputProps} = props;
+    
+    const { label, onBlur, focused, onFocus, errorMessage, onChange, id, ...inputProps} = props;
 
-    const handleFocus = (e) => {
-        setFocused(true);
-    };
+
 
     return (
         <div className='formInput'>
@@ -15,11 +13,9 @@ const FormInput = (props) => {
             <input className='input'
                 {...inputProps}
                 onChange={onChange}
-                onBlur={handleFocus}
-                onFocus={() =>
-                    inputProps.name === "confirmPassword" && setFocused(true)
-                }
-                focused={focused.toString()}
+                onBlur={onBlur}
+                onFocus={onFocus}
+                focused={focused}
             />
             <span className='error'>{errorMessage}</span>
         </div>

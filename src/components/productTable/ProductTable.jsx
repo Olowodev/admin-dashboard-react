@@ -48,7 +48,7 @@ const ProductTable = () => {
                         <td>
                             <div>
                                 <div>
-                                    <img />
+                                    <img alt='' />
                                 </div>
                                 <p>Sticker</p>
                             </div>

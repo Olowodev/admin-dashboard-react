@@ -1,0 +1,116 @@
+.addNewInvoice {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.invoiceForm {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);;
+    padding: 30px;
+}
+
+.invoiceformContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.invoice-imageSelect {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f4fa;
+    padding: 45px;
+    width: 110px;
+    align-self: center;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.invoicePreview {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);;
+    padding: 30px;
+}
+
+.invoiceFormInputContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.invoiceFormInput {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.invoiceFormInput input {
+    height: 50px;
+    background-color: #f1f4fa;
+    border-radius: 10px;
+    padding: 17px 15px;
+    border: none;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #06152b;
+}
+
+.single {
+ width: 40%;
+}
+
+.productDesc {
+    margin-top: 30px;
+}
+
+.invoiceAddButton {
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+    float: right;
+    margin-top: 20px;
+    background-color: #3a36db;
+    color: white;
+    cursor: pointer;
+}
+
+.invoiceAddButton:hover {
+    background-color: #3a36db40;
+}
+
+.createInvoice {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    gap: 10px;
+    color: white;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 65px;
+    background-color: #3a36db;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.invoicePreviewHead {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.downloadIcon {
+    font-size: 24px;
+    color: #3a36db;
+}
+
+.infoArea {
+    background-color: #f1f4fa;
+    margin-top: 18px;
+    padding: 37px 18px 18px 30px;
+}
+
+.infoAreaSection {
+    display: flex;
+    justify-content: space-between;
+}

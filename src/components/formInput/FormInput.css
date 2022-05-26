@@ -1,3 +1,61 @@
+.login {
+    background-color: #e2e2e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loginCard {
+    background-color: white;
+    padding: 29px 32px 40px 32px;
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    height: 582px;
+    border-radius: 8px;
+}
+
+.loginCard img {
+    width: 59px;
+    height: 59px;
+    align-self: center;
+}
+
+.loginCard p:nth-child(2) {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+    opacity: 0.7;
+    color: #a4a6b3;
+    margin-top: 12px;
+}
+
+.loginCard p {
+    text-align: center;
+}
+
+.loginCard p:nth-child(3) {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.3px;
+    color: #252733;
+    margin-top: 32px;
+}
+
+.loginCard p:nth-child(4) {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    color: #9fa2b4;
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
 .formInput {
     display: flex;
     flex-direction: column;
@@ -35,4 +93,31 @@
 
 .input:invalid[focused='true'] ~ .error {
     display: block;
+}
+
+.button {
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    padding: 15px 0;
+    margin-top: 24px;
+}
+
+.registerLink {
+    margin-top: 32px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    color: #9fa2b4;
+}
+
+.registerLink span {
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: #3751ff;
+    margin-left: 5px;
 }

@@ -1,14 +1,40 @@
-import { faCalendarAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import './Ordertable.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faTrash, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FaEllipsisV, FaTrash, FaEdit } from "react-icons/fa";
+
+function FaEllipsisComponent() {
+    
+
+    return (
+        <td className="menu" >
+            <div>
+            <FaEllipsisV className="menuIcon" />
+            <ul className="submenu">
+                <li className="submenu-item">
+                    <div>
+                        <FaEdit />
+                        <p>Edit</p>
+                    </div>
+                </li>
+                <li className="submenu-item">
+                    <div>
+                        <FaTrash />
+                        <p>Delete</p>
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </td>
+    );
+}
 
 const Ordertable = ({userData}) => {
     return (
         <div>
             <table className='table'>
                 <thead>
-                    <th className='th'><input type='checkbox' /></th>
                     <th className='th'>
                         <div>
                             <p>Product</p>
@@ -51,18 +77,12 @@ const Ordertable = ({userData}) => {
                             <FontAwesomeIcon icon={faCaretDown} />
                         </div>
                     </th>
-                    <th className='th'>
-                        <FontAwesomeIcon icon={faTrash} />
-                    </th>
                 </thead>
                 <tbody>
                     {userData.map((user, index)=>(
                         <tr key={index} className='tbody'>
-                            <td>
-                                <input type='checkbox' />
-                            </td>
                             <td className='product'>
-                                <img src={user.pp} alt="product picture" />
+                                <img src={user.pp} alt="product" />
                                 <p>{user.product}</p>
                             </td>
                             <td>
@@ -83,14 +103,12 @@ const Ordertable = ({userData}) => {
                             </td>
                             <td>{user.amount}</td>
                             <td>{user.paymentMethod}</td>
-                            <td className= {'status' + ' ' + user.status}>
+                            <td className= {`status ${user.status}`}>
                                 <span>
                                     <p>{user.status}</p>
                                 </span>
                             </td>
-                            <td className='menu'>
-                                <FontAwesomeIcon icon={faEllipsisV} />
-                            </td>
+                            <FaEllipsisComponent />
                         </tr>
                     ))}
                 </tbody>

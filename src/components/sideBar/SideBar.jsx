@@ -31,7 +31,7 @@ const Sidebar = ({pageNumber}) => {
             <div className='sidebarTabCollection'>
                 {sidebarTabs.map((tabs, index)=>(
                     <NavLink key={index} to={tabs.link}>
-                        <div className={selected===index? 'sidebarTab active' : 'sidebarTab'} onClick={index===5?()=>logOut():()=>setSelected(index)} key={index}>
+                        <div className={selected===index? 'sidebarTab active' : 'sidebarTab'} onClick={index===6?()=>logOut():()=>setSelected(index)} key={index}>
                             <FontAwesomeIcon className='sidebarTabIcon' icon={tabs.icon} />
                             <p>{tabs.text}</p>
                         </div>
