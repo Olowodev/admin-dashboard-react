@@ -51,6 +51,7 @@ const Tickettables = () => {
                     </th>
                     <th className='th'>Priority</th>
                 </thead>
+                {Ticket.length > 0 &&
                 <tbody>
                     {Ticket.map((ticket, index)=>(
                         <tr key={index} className='tbody'>
@@ -76,7 +77,9 @@ const Tickettables = () => {
                         </tr>
                     ))}
                 </tbody>
+                }
             </table>
+            {Ticket.length === 0 && <p className='no-data'>No data to display.....</p>}
         </div>
     );
 }

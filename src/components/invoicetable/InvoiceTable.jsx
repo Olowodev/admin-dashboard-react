@@ -73,6 +73,7 @@ const InvoiceTable = ({InvoiceData}) => {
                         </div>
                     </th>
                 </thead>
+                {InvoiceData.length > 0 && 
                 <tbody>
                     {InvoiceData.map((invoice, index)=>(
                         <tr key={index} className='tbody'>
@@ -104,7 +105,9 @@ const InvoiceTable = ({InvoiceData}) => {
                         </tr>
                     ))}
                 </tbody>
+                }
             </table>
+            {InvoiceData.length === 0 && <p className='no-data'>No data to display.....</p>}
         </div>
     );
 }

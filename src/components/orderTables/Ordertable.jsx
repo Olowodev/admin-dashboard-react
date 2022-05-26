@@ -78,6 +78,7 @@ const Ordertable = ({userData}) => {
                         </div>
                     </th>
                 </thead>
+                {userData.length > 0 &&
                 <tbody>
                     {userData.map((user, index)=>(
                         <tr key={index} className='tbody'>
@@ -112,7 +113,9 @@ const Ordertable = ({userData}) => {
                         </tr>
                     ))}
                 </tbody>
+                }
             </table>
+            {userData.length === 0 && <p className='no-data'>No data to display.....</p>}
         </div>
     );
 }
