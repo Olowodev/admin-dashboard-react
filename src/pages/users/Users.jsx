@@ -11,6 +11,10 @@ const Users = () => {
     const [admins, setAdmins] = useState([]);
     const [users, setUsers] = useState([]);
 
+    const [currentPage, setCurrentPage] = useState();
+    const [pages, setPages] = useState();
+    const [numOfUsers, setNumOfUsers] = useState();
+
 
     useEffect(() => {
         async function fetchadmins() {
@@ -28,7 +32,7 @@ const Users = () => {
 
     async function fetchusers() {
         try {
-            const res = await userRequest.get('/user/')
+            const res = await userRequest.get(`/user/`)
             const users = res.data
             if (users.length > 0) {
                 setUsers(users)
