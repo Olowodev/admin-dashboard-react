@@ -78,8 +78,8 @@ const Navbar = ({page}) => {
                                 <div className='inputs'>
                                     <label>Password</label>
                                     <div className='passwordInputs'>
-                                        <input defaultValue={activeUser.OriginalPassword} />
-                                        <input defaultValue={activeUser.OriginalPassword} />
+                                        <input type='password' defaultValue={activeUser.OriginalPassword} />
+                                        <input type='password' defaultValue={activeUser.OriginalPassword} />
                                     </div>
                                 </div>
                                 <button>SAVE</button>

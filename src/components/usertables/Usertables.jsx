@@ -1,7 +1,7 @@
 import { faCalendarAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import './Usertables.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faEnvelope, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faEnvelope, faUserCircle, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FaEllipsisV, FaTrash, FaEdit, FaAngleDoubleLeft, FaAngleLeft, FaAngleRight, FaAngleDoubleRight } from "react-icons/fa";
 
 function FaEllipsisComponent() {
@@ -30,7 +30,7 @@ function FaEllipsisComponent() {
     );
 }
 
-const Usertables = ({userData, currentPage, setField}) => {
+const Usertables = ({userData, currentPage, handleSorting, field, sortDirection}) => {
     
     const getMonth = (date) => {
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -63,21 +63,36 @@ const Usertables = ({userData, currentPage, setField}) => {
             <table className='table'>
                 <thead>
                     <th className='th'>
-                        <div onClick={() => setField('firstname')}>
+                        <div onClick={handleSorting(firstname)}>
                             <p>Name</p>
-                            <FontAwesomeIcon icon={faCaretDown}/>
+                            {field === 'firstname' && sortDirection === -1 ? 
+                            <FontAwesomeIcon icon={faCaretDown}/> :
+                            field === 'firstname' && sortDirection === 1 ?
+                            <FontAwesomeIcon icon={faCaretUp} /> :
+                            null
+                            }
                         </div>
                     </th>
                     <th className='th'>
-                        <div onClick={() => setField('email')}>
+                        <div onClick={handleSorting(email)}>
                             <p>Email</p>
-                            <FontAwesomeIcon icon={faCaretDown} />
+                            {field === 'email' && sortDirection === -1 ? 
+                            <FontAwesomeIcon icon={faCaretDown}/> :
+                            field === 'email' && sortDirection === 1 ?
+                            <FontAwesomeIcon icon={faCaretUp} /> :
+                            null
+                            }
                         </div>
                     </th>
                     <th className='th'>
-                        <div onClick={() => setField('createdAt')}>
+                        <div onClick={handleSorting(createdAt)}>
                             <p>Date</p>
-                            <FontAwesomeIcon icon={faCaretDown} />
+                            {field === 'createdAt' && sortDirection === -1 ? 
+                            <FontAwesomeIcon icon={faCaretDown}/> :
+                            field === 'createdAt' && sortDirection === 1 ?
+                            <FontAwesomeIcon icon={faCaretUp} /> :
+                            null
+                            }
                         </div>
                     </th>
                 </thead>

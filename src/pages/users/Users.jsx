@@ -16,6 +16,17 @@ const Users = () => {
     const [pages, setPages] = useState();
     const [numOfUsers, setNumOfUsers] = useState();
     const [field, setField] = useState('createdAt');
+    const [sortDirection, setSortDirection] = useState(-1);
+
+    const handleSorting = (fieldname) => {
+        if (sortDirection === -1) {
+            setField(fieldname);
+            setSortDirection(1);
+        } else {
+            setField(fieldname);
+            setSortDirection(-1);
+        }
+    }
 
     
 
@@ -36,7 +47,7 @@ const Users = () => {
 
     async function fetchusers() {
         try {
-            const res = await userRequest.get(`/user/${currentPage}/${field}?sort=-1`)
+            const res = await userRequest.get(`/user/${currentPage}/${field}?sort=${sortDirection}`)
             const users = res.data.users
             if (users.length > 0) {
                 setUsers(users)
@@ -65,7 +76,7 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <Usertables userData={admins} />
+                    <Usertables userData={admins} handleSorting={handleSorting} />
                 </div>
                 <div className='users'>
                     <div className='header'>
@@ -76,7 +87,7 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <Usertables userData={users} setField={setField}  />
+                    <Usertables userData={users} field={field} sortDirection={sortDirection} setField={setField} handleSorting={handleSorting}  />
                     <Pagination data='Users' currentPage = {currentPage} pages={pages} setCurrentPage = {setCurrentPage} numOfData={numOfUsers} />
                 </div>
             </div>
