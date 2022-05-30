@@ -32,7 +32,7 @@
     color: #000;
 }
 
-.sidebarTab.active::before {
+.active::before {
     content: '';
     height: 56px;
     background-color: #000;

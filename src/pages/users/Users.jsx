@@ -6,14 +6,18 @@ import Usertables from '../../components/usertables/Usertables';
 import { AdminUsers, RegisteredUsers } from '../../data';
 import { useState, useEffect } from 'react';
 import { userRequest } from '../../requestMethods';
+import Pagination from '../../components/paginaion/Pagination';
 
 const Users = () => {
     const [admins, setAdmins] = useState([]);
     const [users, setUsers] = useState([]);
 
-    const [currentPage, setCurrentPage] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
     const [pages, setPages] = useState();
     const [numOfUsers, setNumOfUsers] = useState();
+    const [field, setField] = useState('createdAt');
+
+    
 
 
     useEffect(() => {
@@ -32,11 +36,13 @@ const Users = () => {
 
     async function fetchusers() {
         try {
-            const res = await userRequest.get(`/user/`)
-            const users = res.data
+            const res = await userRequest.get(`/user/${currentPage}/${field}?sort=-1`)
+            const users = res.data.users
             if (users.length > 0) {
                 setUsers(users)
             }
+            setPages(res.data.pages)
+            setNumOfUsers(res.data.numOfResults)
             console.log(res)
         } catch (err) {
             console.log(err)
@@ -44,7 +50,7 @@ const Users = () => {
     }
     fetchadmins();
     fetchusers();
-    }, [])
+    }, [currentPage, field])
     return (
         <div>
             <div>
@@ -70,7 +76,8 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <Usertables userData={users} />
+                    <Usertables userData={users} setField={setField}  />
+                    <Pagination data='Users' currentPage = {currentPage} pages={pages} setCurrentPage = {setCurrentPage} numOfData={numOfUsers} />
                 </div>
             </div>
         </div>

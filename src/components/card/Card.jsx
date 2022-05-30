@@ -18,11 +18,16 @@ const Card = ({title, value, icon, percentage, loading}) => {
                 <div>{value}</div>
             </div>
             
+            
             <div className='cardBottom'>
-                <div className={loading ? '' : 'cardBottomDiv'}>
+            {!loading ?
+                <div className='cardBottomDiv'>
                     <img src={icon} alt='' />
                 </div>
+                            :
+                            null}
             </div>
+
         </div>
     );
 }

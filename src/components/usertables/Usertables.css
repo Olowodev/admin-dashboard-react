@@ -24,3 +24,23 @@
 .menuIcon {
     cursor: pointer;
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 10px 20px;
+}
+
+.pagination {
+    display: flex;
+}
+
+.pagination div {
+    border: 2px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+}

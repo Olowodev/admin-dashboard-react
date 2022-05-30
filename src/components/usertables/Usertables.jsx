@@ -2,7 +2,7 @@ import { faCalendarAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import './Usertables.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faEnvelope, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { FaEllipsisV, FaTrash, FaEdit } from "react-icons/fa";
+import { FaEllipsisV, FaTrash, FaEdit, FaAngleDoubleLeft, FaAngleLeft, FaAngleRight, FaAngleDoubleRight } from "react-icons/fa";
 
 function FaEllipsisComponent() {
     
@@ -30,7 +30,7 @@ function FaEllipsisComponent() {
     );
 }
 
-const Usertables = ({userData}) => {
+const Usertables = ({userData, currentPage, setField}) => {
     
     const getMonth = (date) => {
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -56,25 +56,26 @@ const Usertables = ({userData}) => {
 
         return year
     }
+    
 
     return (
         <div>
             <table className='table'>
                 <thead>
                     <th className='th'>
-                        <div>
+                        <div onClick={() => setField('firstname')}>
                             <p>Name</p>
                             <FontAwesomeIcon icon={faCaretDown}/>
                         </div>
                     </th>
                     <th className='th'>
-                        <div>
+                        <div onClick={() => setField('email')}>
                             <p>Email</p>
                             <FontAwesomeIcon icon={faCaretDown} />
                         </div>
                     </th>
                     <th className='th'>
-                        <div>
+                        <div onClick={() => setField('createdAt')}>
                             <p>Date</p>
                             <FontAwesomeIcon icon={faCaretDown} />
                         </div>
@@ -109,6 +110,7 @@ const Usertables = ({userData}) => {
                 }
             </table>
             {userData.length === 0 && <p className='no-data'>No data to display.....</p>}
+            
         </div>
     );
 }
