@@ -2,12 +2,19 @@ import React from 'react'
 import { faCamera, faTrash, faDownload, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from '../../images/logo.png'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { useReactToPrint } from 'react-to-print'
 
 
 
 const NewInvoice = () => {
-    const [userData, setUserData] = useState([])
+    const [userData, setUserData] = useState([]);
+
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: "Invoice"
+    });
 
   return (
     <div className='addNewInvoice'>
@@ -137,11 +144,12 @@ const NewInvoice = () => {
         </form>
     </div>
 
-    <div className='invoicePreview'>
+    <div  className='invoicePreview'>
         <div className='invoicePreviewHead'>
             <h1>Preview</h1>
-            <FontAwesomeIcon className='downloadIcon' icon={faDownload} />
+            <FontAwesomeIcon onClick={handlePrint} className='downloadIcon' icon={faDownload} />
         </div>
+        <div ref={componentRef} >
         <div className='infoArea'>
             <div className='infoAreaSection'>
                 <img src={logo} />
@@ -232,6 +240,7 @@ const NewInvoice = () => {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
   )

@@ -66,8 +66,8 @@ const Ordertable = ({userData}) => {
                         </div>
                     </th>
                     <th className='th'>
-                        <div>
-                            <p>Payment Method</p>                            
+                        <div className="orderpay">
+                            <p>Payment Mtd</p>                            
                             <FontAwesomeIcon icon={faCaretDown} />
                         </div>    
                     </th>

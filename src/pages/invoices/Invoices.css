@@ -96,7 +96,7 @@
 .invoicePreviewHead {
     display: flex;
     justify-content: space-between;
-    margin: 0 10px;
+    margin: 0 10px 18px 10px;
 }
 
 .downloadIcon {
@@ -106,7 +106,6 @@
 
 .infoArea {
     background-color: #f1f4fa;
-    margin-top: 18px;
     padding: 37px 18px 18px 30px;
 }
 

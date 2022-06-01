@@ -18,17 +18,10 @@ const Users = () => {
     const [field, setField] = useState('createdAt');
     const [sortDirection, setSortDirection] = useState(-1);
 
-    const handleSorting = (fieldname) => {
-        if (sortDirection === -1) {
-            setField(fieldname);
-            setSortDirection(1);
-        } else {
-            setField(fieldname);
-            setSortDirection(-1);
-        }
-    }
 
-    
+
+    console.log(sortDirection)
+    console.log(field)
 
 
     useEffect(() => {
@@ -61,7 +54,7 @@ const Users = () => {
     }
     fetchadmins();
     fetchusers();
-    }, [currentPage, field])
+    }, [currentPage, field, sortDirection])
     return (
         <div>
             <div>
@@ -76,7 +69,7 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <Usertables userData={admins} handleSorting={handleSorting} />
+                    <Usertables userData={admins} />
                 </div>
                 <div className='users'>
                     <div className='header'>
@@ -87,7 +80,7 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <Usertables userData={users} field={field} sortDirection={sortDirection} setField={setField} handleSorting={handleSorting}  />
+                    <Usertables setField={setField} sortDirection={sortDirection} setSortDirection={setSortDirection} userData={users}   />
                     <Pagination data='Users' currentPage = {currentPage} pages={pages} setCurrentPage = {setCurrentPage} numOfData={numOfUsers} />
                 </div>
             </div>

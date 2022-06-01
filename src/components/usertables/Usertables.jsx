@@ -1,8 +1,9 @@
 import { faCalendarAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import './Usertables.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faEnvelope, faUserCircle, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faEnvelope, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FaEllipsisV, FaTrash, FaEdit, FaAngleDoubleLeft, FaAngleLeft, FaAngleRight, FaAngleDoubleRight } from "react-icons/fa";
+import ProfileImg from "../profileImg/ProfileImg";
 
 function FaEllipsisComponent() {
     
@@ -30,7 +31,16 @@ function FaEllipsisComponent() {
     );
 }
 
-const Usertables = ({userData, currentPage, handleSorting, field, sortDirection}) => {
+const Usertables = ({userData, setField, sortDirection, setSortDirection}) => {
+
+    const sort = (fieldname) => {
+        setField(fieldname)
+        if (sortDirection === -1) {
+            setSortDirection(1)
+        } else {
+            setSortDirection(-1)
+        }
+    }
     
     const getMonth = (date) => {
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -56,6 +66,8 @@ const Usertables = ({userData, currentPage, handleSorting, field, sortDirection}
 
         return year
     }
+
+
     
 
     return (
@@ -63,36 +75,21 @@ const Usertables = ({userData, currentPage, handleSorting, field, sortDirection}
             <table className='table'>
                 <thead>
                     <th className='th'>
-                        <div onClick={handleSorting(firstname)}>
-                            <p>Name</p>
-                            {field === 'firstname' && sortDirection === -1 ? 
-                            <FontAwesomeIcon icon={faCaretDown}/> :
-                            field === 'firstname' && sortDirection === 1 ?
-                            <FontAwesomeIcon icon={faCaretUp} /> :
-                            null
-                            }
+                        <div>
+                            <p onClick={()=>sort('firstname')}>Name</p>
+                            <FontAwesomeIcon icon={faCaretDown}/>
                         </div>
                     </th>
                     <th className='th'>
-                        <div onClick={handleSorting(email)}>
-                            <p>Email</p>
-                            {field === 'email' && sortDirection === -1 ? 
-                            <FontAwesomeIcon icon={faCaretDown}/> :
-                            field === 'email' && sortDirection === 1 ?
-                            <FontAwesomeIcon icon={faCaretUp} /> :
-                            null
-                            }
+                        <div>
+                            <p onClick={()=>sort('email')}>Email</p>
+                            <FontAwesomeIcon icon={faCaretDown} />
                         </div>
                     </th>
                     <th className='th'>
-                        <div onClick={handleSorting(createdAt)}>
-                            <p>Date</p>
-                            {field === 'createdAt' && sortDirection === -1 ? 
-                            <FontAwesomeIcon icon={faCaretDown}/> :
-                            field === 'createdAt' && sortDirection === 1 ?
-                            <FontAwesomeIcon icon={faCaretUp} /> :
-                            null
-                            }
+                        <div>
+                            <p onClick={()=>sort('createdAt')}>Date</p>
+                            <FontAwesomeIcon icon={faCaretDown} />
                         </div>
                     </th>
                 </thead>
@@ -102,7 +99,7 @@ const Usertables = ({userData, currentPage, handleSorting, field, sortDirection}
                         <tr key={index} className='tbody'>
                             <td>
                                 <div>
-                                    {!user.profileImg ? <FontAwesomeIcon className="userImg" icon={faUserCircle} /> : <img src={user.profileImg} alt='' />}
+                                    {!user.profileImg ? <ProfileImg width={60} height={60} className="userImg" user={user} /> : <img src={user.profileImg} alt='' />}
                                     <p>{`${user.firstname} ${user.lastname}`}</p>
                                 </div>
                             </td>

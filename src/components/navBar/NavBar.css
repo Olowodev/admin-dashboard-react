@@ -67,6 +67,7 @@
 }
 .profile {
     padding: 30px;
+    background-color: white;
 }
 
 .profile button {
@@ -143,6 +144,7 @@
     gap: 15px;
 }
 
-.profileUserIcon {
-    font-size: 150px;
+.passwordInput {
+    position: relative;
 }
+

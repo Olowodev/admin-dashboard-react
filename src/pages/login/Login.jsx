@@ -23,8 +23,14 @@ const Login = () => {
         password: '',
         confirmPassword: '',
     });
+
+    const [view, setView] = useState(false);
     const [focused, setFocused] = useState(false);
     const dispatch = useDispatch();
+
+    const handleView = () => {
+      setView(!view)
+    }
 
     
 
@@ -83,7 +89,7 @@ const Login = () => {
         {
           id: 4,
           name: "password",
-          type: "password",
+          type: view ? null : 'password',
           placeholder: "Password",
           errorMessage:
             "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
@@ -125,6 +131,8 @@ const Login = () => {
                               input.name === "confirmPassword" && setFocused(true)}
                             focused={focused.toString()}
                             onBlur={handleFocus}
+                            type = {input.type}
+                            handleView={()=>handleView()}
                         />
                     ))}
                     <button className='button'>{isLoading ? <div className='lddring'><div></div></div> : <span>Log In</span>}</button>

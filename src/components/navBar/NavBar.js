@@ -1,17 +1,23 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NavBar.css'
-import { faBell, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faUserCircle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import profileImg from '../../images/profile.png'
 import { useSelector } from 'react-redux';
 import Modal from '../modal/Modal';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { userRequest } from '../../requestMethods';
+import ProfileImg from '../profileImg/ProfileImg';
 
 const Navbar = ({page}) => {
 
     const [show, setShow] = useState(false);
     const [activeUser, setActiveUser] = useState('');
+    const [view, setView] = useState(false);
+
+    const handleView = () => {
+        setView(!view)
+    }
 
     const toggleModal = () => {
         setShow(!show)
@@ -47,7 +53,7 @@ const Navbar = ({page}) => {
                 <div className='navbarProfile'>
                     <p>{`${user.firstname} ${user.lastname}`}</p>
                     {user.profileImg ? <img onClick={toggleModal} src={user.profileImg} alt='' /> :
-                    <FontAwesomeIcon onClick={toggleModal} className='userIcon' icon={faUserCircle} />}
+                    <ProfileImg fontSize={22} user={user} width={60} height={60} onClick={() =>toggleModal()} className='userIcon' />}
                 </div>  
             </div>
             <Modal closeModal={toggleModal} show={show}>
@@ -57,7 +63,7 @@ const Navbar = ({page}) => {
                     <div className='mainProfile'>
                         <div className='leftProfile'>
                             {user.profileImg ? <img onClick={toggleModal} src={user.profileImg} alt='' /> :
-                            <FontAwesomeIcon onClick={toggleModal} className='profileUserIcon' icon={faUserCircle} />}
+                            <ProfileImg fontSize={52} width={150} height={150} user={user} className='profileUserIcon' />}
 
                             <button>CHANGE</button>
                         </div>
@@ -78,8 +84,16 @@ const Navbar = ({page}) => {
                                 <div className='inputs'>
                                     <label>Password</label>
                                     <div className='passwordInputs'>
-                                        <input type='password' defaultValue={activeUser.OriginalPassword} />
-                                        <input type='password' defaultValue={activeUser.OriginalPassword} />
+                                        <div className='passwordInput'>
+                                            <input type={view ? null : 'password'} defaultValue={activeUser.OriginalPassword} />
+                                            {!view ? 
+                                            <FontAwesomeIcon style={{ position: 'absolute', top: 14, right: 10, fontSize: 16 }} onClick={()=>handleView()} icon={faEye} />
+                                            :
+                                            <FontAwesomeIcon style={{ position: 'absolute', top: 14, right: 10, fontSize: 16 }} onClick={()=>handleView()} icon={faEyeSlash} />}
+                                        </div>
+                                        <div className='passwordInput'>
+                                            <input type={view ? null : 'password'} defaultValue={activeUser.OriginalPassword} />
+                                        </div>
                                     </div>
                                 </div>
                                 <button>SAVE</button>

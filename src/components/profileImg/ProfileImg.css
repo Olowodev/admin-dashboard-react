@@ -1,0 +1,12 @@
+.profileImg {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profileImg p {
+    color: white;
+    margin-right: 0;
+}

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { logout } from '../../redux/apiCalls';
 import { NavLink } from 'react-router-dom';
-import logo from '../../images/logo.png'
+import logo from '../../images/logo1.png'
 
 
 const Sidebar = ({pageNumber}) => {
@@ -24,7 +24,7 @@ const Sidebar = ({pageNumber}) => {
     return (
         <div className='sidebar'>
             <div className='sidebarHeader'>
-                <img src={logo} alt='Company logo' />
+                <img style={{ width: 40, height: 40}} src={logo} alt='Company logo' />
                 <p>THE DECALMASTERS</p>
             </div>
 
