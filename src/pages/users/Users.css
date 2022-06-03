@@ -41,3 +41,95 @@
     color: #c5c7cd;
 }
 
+.newUserformContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.newUserheader {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+    color: #06152b;
+}
+
+.newUserImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newUserimageSelect {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f4fa;
+    padding: 45px;
+    width: 110px;
+    align-self: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.newUseraddNewformInput {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    position: relative;
+}
+
+
+.newUserformInputContainer {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+
+.newUserbutton1 {
+    margin-top: 25px;
+    background-color: #3a36db;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.newUseraddNewButton {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    gap: 10px;
+    color: white;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.newUseraddNewformInput input,.newUserformInput2 input {
+    height: 50px;
+    width: 300px;
+    background-color: #f1f4fa;
+    border-radius: 10px;
+    padding: 17px 15px;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #06152b;
+}
+
+.newUseraddNewformInput label, .newUserformInput2 label, .newUserformInput4 label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #06152b;
+}
+
+.error4 {
+    font-size: 12px;
+    color: red;
+    align-self: flex-end;
+}

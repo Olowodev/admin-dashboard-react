@@ -22,8 +22,19 @@ const Home = () => {
   const [lastWeekUsers, setLastWeekUsers] = useState([])
   const [newUsers, setNewUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const[activeUser, setActiveUser] = useState({})
 
   useEffect(() => {
+    async function fetchUser() {
+        try {
+            const res = await userRequest.get(`/user/find/${user._id}`)
+            const activeUser = res.data
+            setActiveUser(activeUser);
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    fetchUser();
     async function fetchNewUsers() {
         setLoading(true);
         try {
@@ -52,7 +63,7 @@ const Home = () => {
     fetchpreviousWeekUsers();
   }, [])
 
-  const percentageIncrease = lastWeekUsers.length !== 0 ? ((newUsers.length - lastWeekUsers.length)/lastWeekUsers.length) * 100 : newUsers.length * 100;
+  const percentageIncrease = Math.round(lastWeekUsers.length !== 0 ? ((newUsers.length - lastWeekUsers.length)/lastWeekUsers.length) * 100 : newUsers.length * 100);
 
   return (
       <div className='home'>

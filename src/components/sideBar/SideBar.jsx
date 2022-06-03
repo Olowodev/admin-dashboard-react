@@ -17,7 +17,6 @@ const Sidebar = ({pageNumber}) => {
     const logOut = () => {
         setSelected(sidebarTabs.map(tab => tab.sn).indexOf(6));
         logout(dispatch)
-        localStorage.clear();
     }
     
 

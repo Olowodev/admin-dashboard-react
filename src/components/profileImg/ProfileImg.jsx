@@ -17,7 +17,6 @@ const ProfileImg = ({user, onClick, width, height, fontSize}) => {
         randomColor();
     }, [])
 
-    console.log(color)
   return (
     <div onClick={()=>onClick()} style={{ backgroundColor : color, width : width, height : height}} className='profileImg'>
         <p style={{ fontSize : fontSize}}>{user.firstname.charAt(0)}{user.lastname.charAt(0)}</p>

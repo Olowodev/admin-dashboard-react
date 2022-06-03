@@ -1,5 +1,10 @@
-import { loginFailure, loginStart, loginSuccess, logoutStart, logoutSuccess, logoutFailure } from "./userRedux"
-import { publicRequest } from "../requestMethods";
+import { loginFailure, loginStart, loginSuccess, logoutStart, logoutSuccess, logoutFailure,
+    updateUserStart,
+    updateUserFailure,
+    updateUserSuccess
+} from "./currentUserRedux"
+import { publicRequest, userRequest } from "../requestMethods";
+
 
 export const login = async (dispatch,user) => {
     dispatch(loginStart());
@@ -17,6 +22,19 @@ export const logout = async (dispatch) => {
     try {
         dispatch(logoutSuccess())
     }catch(err){
-        dispatch(logoutFailure())
+        dispatch(logoutFailure(err))
+    }
+}
+
+
+export const updateUser = async (id, dispatch,user) => {
+    dispatch(updateUserStart());
+    try{
+        const res = await userRequest.put(`/user/${id}`, user)
+        dispatch(updateUserSuccess(res.data))
+        console.log(res)
+    }catch(err){
+        dispatch(updateUserFailure(err.response.data))
+        console.log(err.response.data)
     }
 }
