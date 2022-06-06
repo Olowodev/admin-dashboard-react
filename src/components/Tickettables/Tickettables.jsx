@@ -15,12 +15,6 @@ function FaEllipsisComponent() {
             <ul className="submenu">
                 <li className="submenu-item">
                     <div>
-                        <FaEdit />
-                        <p>Edit</p>
-                    </div>
-                </li>
-                <li className="submenu-item">
-                    <div>
                         <FaTrash />
                         <p>Delete</p>
                     </div>
@@ -36,10 +30,10 @@ const Tickettables = () => {
         <div>
             <table className='table'>
                 <thead>
-                    <th className='th'>Ticket details</th>
+                    <th className='th'>Ticket Subject</th>
                     <th className='th'>
                         <div>
-                            <p>Customer name</p>
+                            <p>Customer email</p>
                             <FontAwesomeIcon icon={faCaretDown}/>
                         </div>
                     </th>
@@ -49,7 +43,6 @@ const Tickettables = () => {
                             <FontAwesomeIcon icon={faCaretDown}/>
                         </div>
                     </th>
-                    <th className='th'>Priority</th>
                 </thead>
                 {Ticket.length > 0 &&
                 <tbody>
@@ -69,9 +62,6 @@ const Tickettables = () => {
                                     <p>{ticket.date}</p>
                                     <p>{ticket.time}</p>
                                 </div>
-                            </td>
-                            <td>
-                                <div className={`${ticket.priority} priority`}><p>{ticket.priority}</p></div>
                             </td>
                             <FaEllipsisComponent />
                         </tr>

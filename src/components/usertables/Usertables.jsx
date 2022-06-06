@@ -309,8 +309,8 @@ const Usertables = ({userData, setField, sortDirection, setSortDirection, setSta
                 {userData.length > 0 &&
                 <tbody>
                     {userData.map((user, index)=>(
-                        <tr key={index} className='tbody' onClick={()=>toggleEdit(user._id)}>
-                            <td>
+                        <tr key={index} className='tbody'>
+                            <td onClick={()=>toggleEdit(user._id)}>
                                 <div>
                                     {!user.profileImg ? <ProfileImg width={60} height={60} className="userImg" user={user} /> : <img width={60} height={60} style={{ borderRadius: '50%'}} src={user.profileImg} alt='' />}
                                     <p>{`${user.firstname} ${user.lastname}`}</p>
