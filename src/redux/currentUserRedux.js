@@ -6,6 +6,7 @@ const currentUserSlice = createSlice ({
         currentUser: null,
         isFetching: false,
         error: null,
+        googleTokens: null
     },
     reducers: {
         loginStart: (state)=>{
@@ -28,6 +29,7 @@ const currentUserSlice = createSlice ({
             state.isFetching=false;
             state.error= null;
             state.currentUser=null;
+            state.googleTokens=null;
         },
         logoutFailure: (state, action) => {
             state.isFetching=false;
@@ -45,6 +47,32 @@ const currentUserSlice = createSlice ({
             state.isFetching=false;
             state.error= action.payload;
         },
+        googleStart: (state)=>{
+            state.isFetching=true
+        },
+        googleSuccess: (state, action)=>{
+            state.isFetching=false;
+            state.error= null;
+            state.googleTokens=action.payload;
+        },
+        googleFailure: (state, action) => {
+            state.isFetching=false;
+            state.error= action.payload;
+            state.googleTokens= null;
+        },
+        refreshStart: (state)=>{
+            state.isFetching=true
+        },
+        refreshSuccess: (state, action)=>{
+            state.isFetching=false;
+            state.error= null;
+            state.googleTokens=action.payload;
+        },
+        refreshFailure: (state, action) => {
+            state.isFetching=false;
+            state.error= action.payload;
+        },
+        
 
     }
 });
@@ -52,6 +80,12 @@ const currentUserSlice = createSlice ({
 export const { loginStart,loginSuccess,loginFailure, logoutStart, logoutSuccess, logoutFailure, 
     updateUserStart,
     updateUserFailure,
-    updateUserSuccess
+    updateUserSuccess,
+    googleFailure,
+    googleStart,
+    googleSuccess,
+    refreshFailure,
+    refreshStart,
+    refreshSuccess
 } = currentUserSlice.actions;
 export default currentUserSlice.reducer;

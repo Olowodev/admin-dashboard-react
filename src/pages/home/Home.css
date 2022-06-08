@@ -1,7 +1,6 @@
 .homecontainerHeader {
     display: flex;
     margin-top: 54px;
-    
 }
 
 .welcomeCard {
@@ -58,7 +57,7 @@
     line-height: 25px;
     letter-spacing: 0.4px;
     color: #000;
-    margin-right: 50px;
+    margin-right: 40px;
 }
 
 .cards {
@@ -69,12 +68,11 @@
 .charts {
     margin-top: 70px;
     display: flex;
-    gap: 70px;
+    gap: 50px;
 }
 
 .piechartCard {
     height: 546px;
-    width: 450px;
     padding: 31px 15px;
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     overflow-x: hidden;

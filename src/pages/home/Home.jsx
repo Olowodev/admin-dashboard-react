@@ -1,4 +1,5 @@
 import React from 'react'
+/* global google */
 import Navbar from '../../components/navBar/NavBar'
 import './Home.css'
 import Card from "../../components/card/Card";
@@ -17,6 +18,8 @@ import { userRequest } from '../../requestMethods';
 const Home = () => {
 
     const transactionsArray = false
+    const CLIENT_ID = "632568088361-u00opf4ej4mrqlf5s4rig5n1q9cdmqma.apps.googleusercontent.com"
+
 
   const user = useSelector((state) => state.user.currentUser === null ? null : state.user.currentUser);
   const [lastWeekUsers, setLastWeekUsers] = useState([])
@@ -24,7 +27,22 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const[activeUser, setActiveUser] = useState({})
 
+  /* global google */
   useEffect(() => {
+
+    /*const handleCredentialResponse = (res) => {
+        console.log(res.credential)
+    }
+
+    google.accounts.id.initialize({
+            client_id: CLIENT_ID,
+            callback: handleCredentialResponse,
+        });
+        google.accounts.id.renderButton(
+            { theme: "outline", size: "large"}
+        );
+        google.accounts.id.prompt();*/
+
     async function fetchUser() {
         try {
             const res = await userRequest.get(`/user/find/${user._id}`)

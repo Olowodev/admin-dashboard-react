@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = 'http://192.168.0.18:5000/api/';
-const user = localStorage.getItem('persist:root') === null ? '' : JSON.parse(localStorage.getItem('persist:root')).user;
+const user = sessionStorage.getItem('persist:root') === null ? '' : JSON.parse(sessionStorage.getItem('persist:root')).user;
 const currentUser = user ? JSON.parse(user).currentUser : '';
 const TOKEN = currentUser ? currentUser.accessToken : "";
 

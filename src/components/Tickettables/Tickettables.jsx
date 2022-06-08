@@ -1,5 +1,4 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-import { Ticket } from "../../data";
 import './Tickettables.css'
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,7 +24,7 @@ function FaEllipsisComponent() {
     );
 }
 
-const Tickettables = () => {
+const Tickettables = ({Ticket}) => {
     return (
         <div>
             <table className='table'>
