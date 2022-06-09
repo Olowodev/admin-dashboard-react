@@ -4,8 +4,7 @@ import './Invoices.css'
 import InvoiceTable from '../../components/invoicetable/InvoiceTable'
 import Navbar from '../../components/navBar/NavBar'
 import { RegisteredUsers } from '../../data'
-import { faCamera, faTrash, faDownload, faPlus } from '@fortawesome/free-solid-svg-icons'
-import logo from '../../images/logo.png'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
 
 

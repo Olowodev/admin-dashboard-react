@@ -1,8 +1,8 @@
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import './Tickettables.css'
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaEllipsisV, FaTrash, FaEdit } from "react-icons/fa";
+import { FaEllipsisV, FaTrash } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 function FaEllipsisComponent() {
     
@@ -24,7 +24,9 @@ function FaEllipsisComponent() {
     );
 }
 
-const Tickettables = ({Ticket}) => {
+const Tickettables = ({Ticket, email}) => {
+    
+    
     return (
         <div>
             <table className='table'>
@@ -43,32 +45,38 @@ const Tickettables = ({Ticket}) => {
                         </div>
                     </th>
                 </thead>
-                {Ticket.length > 0 &&
                 <tbody>
-                    {Ticket.map((ticket, index)=>(
-                        <tr key={index} className='tbody'>
+                {//{console.log(Ticket.length)}
+}
+                    {Ticket.map((Tic, index)=>(
+                        <tr className='tbody'>
                             <td>
+                        <a href={`https://mail.google.com/mail/u/?authuser=${email}#inbox/${Tic.id}`} target="_blank">
                                 <div className='topic'>
-                                    <img src={ticket.img} alt='' />
-                                    <p>{ticket.title}</p>
+                                    <p>{Tic.subject}</p>
                                 </div>
+                        </a>
+
                             </td>
                             <td>
-                                <p className='name'>{ticket.name}</p>
+                                <p className='name'>{Tic.from}</p>
                             </td>
                             <td>
                                 <div className='date'>
-                                    <p>{ticket.date}</p>
-                                    <p>{ticket.time}</p>
+                                    <p>{Tic.date}</p>
+                                    <p>me</p>
                                 </div>
                             </td>
                             <FaEllipsisComponent />
+
                         </tr>
-                    ))}
+                        ))
+                        }   
                 </tbody>
-                }
+
             </table>
-            {Ticket.length === 0 && <p className='no-data'>No data to display.....</p>}
+            {//{Ticket == 0 && <p className='no-data'>No data to display.....</p>}
+}
         </div>
     );
 }

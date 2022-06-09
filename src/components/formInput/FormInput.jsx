@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './FormInput.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";

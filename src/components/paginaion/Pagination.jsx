@@ -37,10 +37,10 @@ const Pagination = ({currentPage, pages, setCurrentPage, numOfData, data}) => {
                 {currentPage}
             </div>
             <div onClick={handlePageChangenext}>
-                <FaAngleRight style={{ color : currentPage == pages ? 'gray' : 'black'}} />
+                <FaAngleRight style={{ color : currentPage === pages ? 'gray' : 'black'}} />
             </div>
             <div onClick={handlePageChangelast}>
-                <FaAngleDoubleRight style={{ color : currentPage == pages ? 'gray' : 'black'}} />
+                <FaAngleDoubleRight style={{ color : currentPage === pages ? 'gray' : 'black'}} />
             </div>
         </div>
     </div>

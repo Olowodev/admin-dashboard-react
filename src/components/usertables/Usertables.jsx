@@ -1,4 +1,4 @@
-import { faCalendarAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import './Usertables.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faEnvelope, faTimes, faSave, faCamera, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +14,6 @@ import {
     getDownloadURL,
 } from 'firebase/storage'
 import app from '../../firebase'
-import { async } from "@firebase/util";
 
 function FaEllipsisComponent({userId, toggleModalState, toggleEdit}) {
     

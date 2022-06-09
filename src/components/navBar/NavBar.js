@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NavBar.css'
-import { faBell, faUserCircle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import Modal from '../modal/Modal';
 import { useState } from 'react';
 import { useEffect, useRef } from 'react';
 import { useDispatch } from "react-redux";
 import { updateUser } from '../../redux/apiCalls';
-import { userRequest, publicRequest } from '../../requestMethods';
+import { userRequest} from '../../requestMethods';
 import ProfileImg from '../profileImg/ProfileImg';
 import {
     getStorage,
@@ -153,7 +153,7 @@ const Navbar = ({page}) => {
             }
         }
         fetchUser();
-    }, [])
+    }, [user._id])
 
     const inputs = [
         {

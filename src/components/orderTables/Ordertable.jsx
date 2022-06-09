@@ -1,4 +1,3 @@
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import './Ordertable.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";

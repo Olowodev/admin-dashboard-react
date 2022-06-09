@@ -1,5 +1,5 @@
 import React from 'react'
-import { faCamera, faTrash, faDownload, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faDownload, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from '../../images/logo.png'
 import { useState, useRef } from 'react'
@@ -152,7 +152,7 @@ const NewInvoice = () => {
         <div ref={componentRef} >
         <div className='infoArea'>
             <div className='infoAreaSection'>
-                <img src={logo} />
+                <img src={logo} alt='logo' />
                 <div>
                     <p>@ your.mail@gmail.com</p>
                     <p>+44 745977374</p>

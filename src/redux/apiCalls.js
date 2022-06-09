@@ -53,6 +53,7 @@ export const refreshTokenFunc = async (dispatch, refreshToken) => {
         dispatch(refreshSuccess({...others}))
     } catch (err) {
         dispatch(refreshFailure(err.response.data))
+        console.log(err)
     }
 }
 

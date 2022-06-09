@@ -3,7 +3,6 @@ import Navbar from '../../components/navBar/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCamera, faSave, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Usertables from '../../components/usertables/Usertables';
-import { AdminUsers, RegisteredUsers } from '../../data';
 import { useState, useEffect, useRef } from 'react';
 import { publicRequest, userRequest } from '../../requestMethods';
 import Pagination from '../../components/paginaion/Pagination';
@@ -116,7 +115,7 @@ const Users = () => {
                         const registeredUserwithImage = {...others, profileImg: downloadURL};
                         async function registerUser() {
                             try {
-                                const res = await publicRequest.post('/auth/register', addAdmin ? registeredAdminwithImage : registeredUserwithImage);
+                                 await publicRequest.post('/auth/register', addAdmin ? registeredAdminwithImage : registeredUserwithImage);
                             } catch (err) {
                                 console.log(err)
                             }

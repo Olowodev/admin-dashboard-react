@@ -135,7 +135,7 @@ const Login = () => {
                             handleView={()=>handleView()}
                         />
                     ))}
-                    <button className='button'>{isLoading ? <div className='lddring'><div></div></div> : <span>Log In</span>}</button>
+                    <button className='button'>{isLoading ? <div className='lrrring'><div></div></div> : <span>Log In</span>}</button>
                     <span className='error1'>{errorMessage}</span>
                 </form>
                 <p className='registerLink'>Don't have an account?<span>Sign Up</span></p>

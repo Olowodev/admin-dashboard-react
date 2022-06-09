@@ -1,5 +1,4 @@
 import './Tickets.css'
-/*global google */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortAmountUp, faFilter } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../../components/navBar/NavBar';
@@ -8,7 +7,6 @@ import axios from 'axios'
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { publicRequest } from '../../requestMethods';
 import { gLogin, refreshTokenFunc } from '../../redux/apiCalls';
 import jwt_decode from 'jwt-decode'
 //import {gapi} from 'gapi-script'
@@ -26,11 +24,19 @@ const Tickets = () => {
   const refreshToken = useSelector((state) => state.user.googleTokens === null ? null : state.user.googleTokens.refresh_token);
 
 
-  const decoded = jwt_decode(idToken);
-  const email = decoded.email;
+ 
+  const decoded = idToken ? jwt_decode(idToken) : null;
+  
+  const email = decoded?.email;
 
   const [tickets, setTickets] = useState([]);
-  const [messagesId, setMessagesId] = useState([]);
+  const [messagesId, setMessagesId] = useState();
+  const [destructuredTic, setDestructuredTic] =  useState([]);
+
+  const [dN, setDN] = useState([]);
+  const [edN, setEdN] = useState([]);
+
+
 
     
 
@@ -42,7 +48,7 @@ const Tickets = () => {
     })*/
 
     const CLIENT_ID = "632568088361-u00opf4ej4mrqlf5s4rig5n1q9cdmqma.apps.googleusercontent.com"
-    const API_KEY = "AIzaSyCPfWP0-pieT4LlTA78W9GZalqpRfbL8rg"
+    //const API_KEY = "AIzaSyCPfWP0-pieT4LlTA78W9GZalqpRfbL8rg"
     const SCOPES = "https://mail.google.com/ https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.readonly"
 
     /*useGoogleOneTapLogin({
@@ -91,39 +97,9 @@ const Tickets = () => {
         client.requestCode();
         }
 
-        async function getList() {
-            //const accessToken = gapi.auth.getToken().access_token;
-            console.log(accessToken)
-            
-            try {
-                const res = await googleRequest.get(`/${email}/messages`)
-                for (let i = 0; i < res.data.messages.length; i++) {
-                    setMessagesId(res.data.messages[i].id)
-                }
-                
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
-        getList();
-
-        async function getMessages() {
-            try {
-                for (let i = 0; i < messagesId.length; i++) {
-                const res = await googleRequest.get(`/${email}/messages/${messagesId[i]}`)
-                    console.log(res)
-                }
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
-        getMessages();
-
         const interval  = setInterval (async () => {
             refreshTokenFunc(dispatch, {refreshToken: refreshToken})
-          }, 3000000);
+          }, 300000);
       
           return () => clearInterval(interval);
 
@@ -138,7 +114,76 @@ const Tickets = () => {
             { theme: "outline", size: "large"}
         );
         google.accounts.id.prompt();*/
-    }, [])
+    }, [accessToken])
+
+    useEffect(() => {
+        async function getList() {
+            //const accessToken = gapi.auth.getToken().access_token;
+            console.log(accessToken)
+            
+            try {
+                const res = await googleRequest.get(`/${email}/messages?q=[in:inbox -category:{social promotions forums}]`)
+                const messages = res.data.messages
+                const resArray = messages.map((message, index) => {
+                    return message.id
+                })
+                console.log(resArray)
+                setMessagesId(resArray)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getList();
+    }, [email])
+
+    useEffect(()=>{
+        async function getMessages() {
+            try {
+                //messagesId.map( async (messageId, index) => {
+                  //  const res = await googleRequest.get(`/${email}/messages/${messageId}`)
+                    //console.log(res.data)
+                //})
+
+
+                for (let index = 0; index < messagesId.length; index++) {
+                const res = await googleRequest.get(`/${email}/messages/${messagesId[index]}?format=metadata&metadataHeaders=Subject&metadataHeaders=From&metadataHeaders=Date`)
+                const dataNeeded = [res.data.id, ...res.data.payload.headers]
+                    tickets.push(dataNeeded)
+                }
+                
+    console.log(tickets)
+
+    if(tickets) {
+    tickets.map((ticket, index)=>{
+        const subObj = ticket.find(o => o.name === "Subject");
+        const fromObj = ticket.find(o => o.name === "From");
+        const dateObj = ticket.find(o => o.name === "Date");
+        if (subObj && fromObj && dateObj) {
+        const Obj = {
+            'subject': subObj.value,
+            'from': fromObj.value,
+            'date': dateObj.value,
+            'id': ticket[0]
+        }
+
+        setDestructuredTic(current => [...current, Obj])
+        }
+        })
+    }
+
+    console.log(destructuredTic)
+
+
+
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getMessages();
+    }, [email, messagesId])
+
 
     /*const onSuccess = (res) => {
         console.log("Current user: ", res)
@@ -187,7 +232,7 @@ const Tickets = () => {
                         </div>
                     </div>
 
-                    <Tickettables Ticket={tickets} />
+                    <Tickettables Ticket={destructuredTic} email={email} />
 
                 </div>
             </div>
