@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useEffect, useRef } from 'react';
 import { useDispatch } from "react-redux";
 import { updateUser } from '../../redux/apiCalls';
-import { userRequest} from '../../requestMethods';
 import ProfileImg from '../profileImg/ProfileImg';
 import {
     getStorage,
@@ -16,8 +15,18 @@ import {
     getDownloadURL,
 } from 'firebase/storage'
 import app from '../../firebase'
+import axios from 'axios';
 
 const Navbar = ({page}) => {
+
+const token = useSelector((state) => state.user.currentUser === null? null : state.user.currentUser.accessToken)
+const BASE_URL = 'http://192.168.0.18:5000/api/';
+
+
+ const userRequest = axios.create({
+    baseURL: BASE_URL,
+    headers: {token:  `Bearer ${token}`},
+})
 
     const [show, setShow] = useState(false);
     const [activeUser, setActiveUser] = useState({});
@@ -112,7 +121,7 @@ const Navbar = ({page}) => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     console.log('File available at', downloadURL);
                     const newUser = {...others, profileImg: downloadURL};
-                    updateUser(user._id, dispatch, newUser)
+                    updateUser(user._id, dispatch, newUser, token)
                     });
                 }
                 );
@@ -120,7 +129,7 @@ const Navbar = ({page}) => {
                 setFileError(true);
             }
         } else {
-            updateUser(user._id, dispatch, {...others})
+            updateUser(user._id, dispatch, {...others}, token)
             setFileError(false)
         }
     

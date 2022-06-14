@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faEnvelope, faTimes, faSave, faCamera, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FaEllipsisV, FaTrash, FaEdit } from "react-icons/fa";
 import ProfileImg from "../profileImg/ProfileImg";
-import {userRequest, publicRequest} from '../../requestMethods'
+import {publicRequest} from '../../requestMethods'
 import Modal from "../modal/Modal";
 import { useState, useRef } from "react";
 import {
@@ -14,6 +14,8 @@ import {
     getDownloadURL,
 } from 'firebase/storage'
 import app from '../../firebase'
+import {useSelector} from 'react-redux'
+import axios from "axios";
 
 function FaEllipsisComponent({userId, toggleModalState, toggleEdit}) {
     
@@ -43,6 +45,13 @@ function FaEllipsisComponent({userId, toggleModalState, toggleEdit}) {
 
 const Usertables = ({userData, setField, sortDirection, setSortDirection, setState, isLoading}) => {
 
+const token = useSelector((state) => state.user.currentUser === null? null : state.user.currentUser.accessToken)
+const BASE_URL = 'http://192.168.0.18:5000/api/';
+
+const userRequest = axios.create({
+    baseURL: BASE_URL,
+    headers: {token:  `Bearer ${token}`},
+})
     const [show, setShow] = useState(false);
     const [userId, setUserId] = useState('');
     const [editUserId, setEditUserId] = useState('');

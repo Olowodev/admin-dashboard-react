@@ -33,8 +33,7 @@ const Tickets = () => {
   const [messagesId, setMessagesId] = useState();
   const [destructuredTic, setDestructuredTic] =  useState([]);
 
-  const [dN, setDN] = useState([]);
-  const [edN, setEdN] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
 
 
@@ -232,7 +231,7 @@ const Tickets = () => {
                         </div>
                     </div>
 
-                    <Tickettables Ticket={destructuredTic} email={email} />
+                    <Tickettables Ticket={destructuredTic} isLoading={isLoading} setIsLoading={setIsLoading} email={email} />
 
                 </div>
             </div>

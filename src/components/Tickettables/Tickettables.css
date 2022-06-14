@@ -58,3 +58,10 @@
 .NORMAL {
     background-color: #29cc97;
 }
+
+.subject {
+    overflow: hidden;
+    width: 250px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

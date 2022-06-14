@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCamera, faSave, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Usertables from '../../components/usertables/Usertables';
 import { useState, useEffect, useRef } from 'react';
-import { publicRequest, userRequest } from '../../requestMethods';
+import { publicRequest} from '../../requestMethods';
 import Pagination from '../../components/paginaion/Pagination';
 import Modal from '../../components/modal/Modal';
 import {
@@ -14,8 +14,17 @@ import {
     getDownloadURL,
 } from 'firebase/storage'
 import app from '../../firebase'
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 const Users = () => {
+const token = useSelector((state) => state.user.currentUser === null? null : state.user.currentUser.accessToken)
+const BASE_URL = 'http://192.168.0.18:5000/api/';
+
+const userRequest = axios.create({
+    baseURL: BASE_URL,
+    headers: {token:  `Bearer ${token}`},
+})
     const [admins, setAdmins] = useState([]);
     const [users, setUsers] = useState([]);
     const [show, setShow] = useState(false);
@@ -86,6 +95,7 @@ const Users = () => {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         if (file != null) {
             if (file.type.startsWith("image/")) {
                 const fileName = new Date().getTime() + file.name;
@@ -113,6 +123,7 @@ const Users = () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         const registeredAdminwithImage = {...others, isAdmin: true, profileImg: downloadURL};
                         const registeredUserwithImage = {...others, profileImg: downloadURL};
+                        console.log(registeredAdminwithImage)
                         async function registerUser() {
                             try {
                                  await publicRequest.post('/auth/register', addAdmin ? registeredAdminwithImage : registeredUserwithImage);

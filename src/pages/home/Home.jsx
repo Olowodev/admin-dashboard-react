@@ -12,14 +12,21 @@ import vector from '../../images/vector.svg'
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { userRequest } from '../../requestMethods';
+import axios from 'axios';
 
 const Home = () => {
 
     //const transactionsArray = false
     //const CLIENT_ID = "632568088361-u00opf4ej4mrqlf5s4rig5n1q9cdmqma.apps.googleusercontent.com"
 
+    const token = useSelector((state) => state.user.currentUser === null? null : state.user.currentUser.accessToken)
+const BASE_URL = 'http://192.168.0.18:5000/api/';
 
+
+    const userRequest = axios.create({
+        baseURL: BASE_URL,
+        headers: {token:  `Bearer ${token}`},
+    })
   const user = useSelector((state) => state.user.currentUser === null ? null : state.user.currentUser);
   const [lastWeekUsers, setLastWeekUsers] = useState([])
   const [newUsers, setNewUsers] = useState([]);

@@ -9,7 +9,9 @@ import { loginFailure, loginStart, loginSuccess, logoutStart, logoutSuccess, log
     refreshSuccess,
     refreshFailure
 } from "./currentUserRedux"
-import { publicRequest, userRequest } from "../requestMethods";
+import { publicRequest } from "../requestMethods";
+import axios from 'axios'
+
 
 
 export const login = async (dispatch,user) => {
@@ -41,7 +43,7 @@ export const gLogin = async (dispatch, code) => {
         dispatch(googleSuccess({...others}))
     } catch (err) {
         console.log(err)
-        dispatch(googleFailure(err.response.data))
+        dispatch(googleFailure(err.code))
     }
 }
 
@@ -58,10 +60,12 @@ export const refreshTokenFunc = async (dispatch, refreshToken) => {
 }
 
 
-export const updateUser = async (id, dispatch,user) => {
+export const updateUser = async (id, dispatch,user, token) => {
     dispatch(updateUserStart());
     try{
-        const res = await userRequest.put(`/user/${id}`, user)
+        const res = await axios.put(`http://192.168.0.18:5000/api/user/${id}`, user, {
+            headers: {token: `Bearer ${token}`}
+        })
         dispatch(updateUserSuccess(res.data))
         console.log(res)
     }catch(err){

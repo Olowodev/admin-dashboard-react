@@ -3,6 +3,8 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaEllipsisV, FaTrash } from "react-icons/fa";
 import {Link} from 'react-router-dom'
+import moment from 'moment'
+import Moment from 'react-moment'
 
 function FaEllipsisComponent() {
     
@@ -24,8 +26,12 @@ function FaEllipsisComponent() {
     );
 }
 
-const Tickettables = ({Ticket, email}) => {
+const Tickettables = ({Ticket, email, isLoading, setIsLoading}) => {
     
+
+    if(Ticket.length > 0) {
+        setIsLoading(false)
+    }
     
     return (
         <div>
@@ -49,22 +55,25 @@ const Tickettables = ({Ticket, email}) => {
                 {//{console.log(Ticket.length)}
 }
                     {Ticket.map((Tic, index)=>(
+                        
                         <tr className='tbody'>
                             <td>
                         <a href={`https://mail.google.com/mail/u/?authuser=${email}#inbox/${Tic.id}`} target="_blank">
                                 <div className='topic'>
-                                    <p>{Tic.subject}</p>
+                                    <p className='subject'>{Tic.subject}</p>
                                 </div>
                         </a>
 
                             </td>
                             <td>
-                                <p className='name'>{Tic.from}</p>
+                                <p className='name'>{Tic.from.split("<")[1].slice(0, -1)}</p>
                             </td>
                             <td>
                                 <div className='date'>
-                                    <p>{Tic.date}</p>
-                                    <p>me</p>
+                                    <Moment format='ll'>{Tic.date}</Moment>
+                                    <p>
+                                    <Moment format='LT'>{Tic.date}</Moment>
+                                    </p>
                                 </div>
                             </td>
                             <FaEllipsisComponent />
@@ -75,8 +84,12 @@ const Tickettables = ({Ticket, email}) => {
                 </tbody>
 
             </table>
-            {//{Ticket == 0 && <p className='no-data'>No data to display.....</p>}
-}
+            {Ticket == 0 && !isLoading && <p className='no-data'>No data to display.....</p>}
+            {isLoading && <div className="loading">
+                <div className='lddring'><div></div></div>
+                <p>Fetching Data...</p>
+                </div>}
+
         </div>
     );
 }

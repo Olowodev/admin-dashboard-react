@@ -11,8 +11,14 @@
     margin-right: 25px;
 }
 
+.welcomeCard div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .welcomeCard h1 {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 40px;
     letter-spacing: 0.4px;
